@@ -51,16 +51,27 @@ function playRound(computerChoice,playerChoice) {
 }
 
 function game() {
+    let score = 0
     for  (let i = 1; i <= 5; i++) {
         const computerChoice = getComputerChoice();
         const playerChoice = getPlayerChoice();
-        console.log(playRound(computerChoice, playerChoice));
-        console.log(`Round ${i} of 5.`);
+        let outcome = playRound(computerChoice, playerChoice)
+        console.log(outcome)
+        if (outcome === `You Win! ${computerChoice} is beaten by ${playerChoice}.`) {
+            score++;
+        }
+        
+        console.log(`Your score is ${score} out of ${i}.`)
 
     }
+    if (score > 2) {
+        console.log("You Won The Game!")
+    }
+    else {
+        console.log("You Lost The Game!")
+    }
+
 }
-
-
 
 
 game()
