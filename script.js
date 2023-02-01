@@ -1,3 +1,10 @@
+// Declerations
+const buttons = document.querySelectorAll('button');
+const resultDiv = document.querySelector('.result')
+const scoreDiv = document.querySelector(".score")
+const listDiv = document.querySelector("li")
+
+// Game Code
 function getPlayerChoice() {
     let playerChoice = prompt("Throw hands!", "Rock, Paper or Scissors").toLowerCase();
     return playerChoice;
@@ -50,28 +57,35 @@ function playRound(computerChoice,playerChoice) {
     }
 }
 
-function game() {
-    //let score = 0;
-    //for  (let i = 1; i <= 5; i++) {
-    const computerChoice = getComputerChoice();
-    const playerChoice = getPlayerChoice();
-    let outcome = playRound(computerChoice, playerChoice);
-    console.log(outcome);
-    //if (outcome === `You Win! ${computerChoice} is beaten by ${playerChoice}.`) {
-    //   score++;
-    //}
+function game(buttonPressed) {
     
-    //console.log(`Your score is ${score}.`);
-
-    //}
-    //if (score > 2) {
-    //    console.log("You Won The Game!");
-    //}
-    //else {
-    //    console.log("You Lost The Game!");
-    //}
-
+    const computerChoice = getComputerChoice();
+    const playerChoice = buttonPressed;
+    let outcome = playRound(computerChoice, playerChoice);
+    resultDiv.textContent = (outcome);
+    if (outcome === `You Win! ${computerChoice} is beaten by ${playerChoice}.`) {
+       score++;
+    }
+    gameCounter ++;
+    scoreDiv.textContent = (`Your score is ${score} out of ${gameCounter}.`);
+    
+    if ((gameCounter >= 5) || (score >= 5)) {
+        listDiv.removeChild(buttons[0])
+        listDiv.removeChild(buttons[1])
+        listDiv.removeChild(buttons[2])
+        if (score >= 5) {
+            listDiv.textContent = ("Game Over! You Win!")
+        }
+        else {
+            listDiv.textContent = ("Game Over! The Computer Wins!")
+        }
+        
+    }
 }
 
+let score = 0;
+let gameCounter = 0
 
-game()
+buttons[0].addEventListener("click", () => {game("rock")})
+buttons[1].addEventListener("click", () => {game("paper")})
+buttons[2].addEventListener("click", () => {game("scissors")})

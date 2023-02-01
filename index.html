@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <title>Document</title>
 </head>
-<body>
+<body style="display: flex; flex-direction: column; align-items: center;" >
     <p>Choose you're weapon!</p>
     <li style="list-style: none; margin: 1em;">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
-        <button id="rock">Scissors</button>
+        <button id="scissors">Scissors</button>
     </li>
 
     <div style="border: 3px solid #1C6EA4;">
-        <div id="result">Who will win?</div>
+        <div class="result">Who will win?</div>
+        <div class="score">Lets find out!</div>
     </div>
 </body>
+
+
 </html>
